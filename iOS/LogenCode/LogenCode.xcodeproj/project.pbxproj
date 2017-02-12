@@ -1,0 +1,367 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7B6424F61E4743DD004955EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6424F51E4743DD004955EE /* AppDelegate.swift */; };
+		7B6424F81E4743DD004955EE /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6424F71E4743DD004955EE /* MainTableViewController.swift */; };
+		7B6424FD1E4743DD004955EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B6424FC1E4743DD004955EE /* Assets.xcassets */; };
+		7B8141FA1E4C0FB00067F389 /* BranchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8141F91E4C0FB00067F389 /* BranchCell.swift */; };
+		7B8141FC1E4C12700067F389 /* BranchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B8141FB1E4C12700067F389 /* BranchCell.xib */; };
+		7B83B3491E49F8C100F86D27 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B83B3481E49F8C100F86D27 /* Branch.swift */; };
+		7B83B34E1E4B5E5900F86D27 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B83B34D1E4B5E5900F86D27 /* libsqlite3.tbd */; };
+		7B83B3601E4B60A500F86D27 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B83B3561E4B60A500F86D27 /* FMDatabase.m */; };
+		7B83B3611E4B60A500F86D27 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B83B3581E4B60A500F86D27 /* FMDatabaseAdditions.m */; };
+		7B83B3621E4B60A500F86D27 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B83B35A1E4B60A500F86D27 /* FMDatabasePool.m */; };
+		7B83B3631E4B60A500F86D27 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B83B35C1E4B60A500F86D27 /* FMDatabaseQueue.m */; };
+		7B83B3641E4B60A500F86D27 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B83B35F1E4B60A500F86D27 /* FMResultSet.m */; };
+		7B83B3661E4B61F700F86D27 /* LogenBranchCode.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7B83B3651E4B61F700F86D27 /* LogenBranchCode.sqlite */; };
+		7BD3947B1E4BF87B002B5FAC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BD3947A1E4BF87B002B5FAC /* Default-568h@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7B6424F21E4743DD004955EE /* LogenCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LogenCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B6424F51E4743DD004955EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7B6424F71E4743DD004955EE /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		7B6424FC1E4743DD004955EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7B6425011E4743DD004955EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B8141F91E4C0FB00067F389 /* BranchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchCell.swift; sourceTree = "<group>"; };
+		7B8141FB1E4C12700067F389 /* BranchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BranchCell.xib; sourceTree = "<group>"; };
+		7B83B3481E49F8C100F86D27 /* Branch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
+		7B83B34D1E4B5E5900F86D27 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		7B83B3541E4B60A400F86D27 /* LogenCode-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LogenCode-Bridging-Header.h"; sourceTree = "<group>"; };
+		7B83B3551E4B60A500F86D27 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = LogenCode/fmdb/FMDatabase.h; sourceTree = "<group>"; };
+		7B83B3561E4B60A500F86D27 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = LogenCode/fmdb/FMDatabase.m; sourceTree = "<group>"; };
+		7B83B3571E4B60A500F86D27 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = LogenCode/fmdb/FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		7B83B3581E4B60A500F86D27 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = LogenCode/fmdb/FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		7B83B3591E4B60A500F86D27 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = LogenCode/fmdb/FMDatabasePool.h; sourceTree = "<group>"; };
+		7B83B35A1E4B60A500F86D27 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = LogenCode/fmdb/FMDatabasePool.m; sourceTree = "<group>"; };
+		7B83B35B1E4B60A500F86D27 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = LogenCode/fmdb/FMDatabaseQueue.h; sourceTree = "<group>"; };
+		7B83B35C1E4B60A500F86D27 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = LogenCode/fmdb/FMDatabaseQueue.m; sourceTree = "<group>"; };
+		7B83B35D1E4B60A500F86D27 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = LogenCode/fmdb/FMDB.h; sourceTree = "<group>"; };
+		7B83B35E1E4B60A500F86D27 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = LogenCode/fmdb/FMResultSet.h; sourceTree = "<group>"; };
+		7B83B35F1E4B60A500F86D27 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = LogenCode/fmdb/FMResultSet.m; sourceTree = "<group>"; };
+		7B83B3651E4B61F700F86D27 /* LogenBranchCode.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = LogenBranchCode.sqlite; path = ../../LogenBranchCode.sqlite; sourceTree = "<group>"; };
+		7BD3947A1E4BF87B002B5FAC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7B6424EF1E4743DD004955EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B83B34E1E4B5E5900F86D27 /* libsqlite3.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7B6424E91E4743DD004955EE = {
+			isa = PBXGroup;
+			children = (
+				7BD3947A1E4BF87B002B5FAC /* Default-568h@2x.png */,
+				7B83B3651E4B61F700F86D27 /* LogenBranchCode.sqlite */,
+				7B83B34F1E4B5FDE00F86D27 /* fmdb */,
+				7B6424F41E4743DD004955EE /* LogenCode */,
+				7B6424F31E4743DD004955EE /* Products */,
+				7B83B34A1E4B5E4B00F86D27 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7B6424F31E4743DD004955EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7B6424F21E4743DD004955EE /* LogenCode.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7B6424F41E4743DD004955EE /* LogenCode */ = {
+			isa = PBXGroup;
+			children = (
+				7B6424F51E4743DD004955EE /* AppDelegate.swift */,
+				7B6424F71E4743DD004955EE /* MainTableViewController.swift */,
+				7B6424FC1E4743DD004955EE /* Assets.xcassets */,
+				7B6425011E4743DD004955EE /* Info.plist */,
+				7B83B3481E49F8C100F86D27 /* Branch.swift */,
+				7B8141F91E4C0FB00067F389 /* BranchCell.swift */,
+				7B8141FB1E4C12700067F389 /* BranchCell.xib */,
+			);
+			path = LogenCode;
+			sourceTree = "<group>";
+		};
+		7B83B34A1E4B5E4B00F86D27 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7B83B34D1E4B5E5900F86D27 /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7B83B34F1E4B5FDE00F86D27 /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				7B83B3551E4B60A500F86D27 /* FMDatabase.h */,
+				7B83B3561E4B60A500F86D27 /* FMDatabase.m */,
+				7B83B3571E4B60A500F86D27 /* FMDatabaseAdditions.h */,
+				7B83B3581E4B60A500F86D27 /* FMDatabaseAdditions.m */,
+				7B83B3591E4B60A500F86D27 /* FMDatabasePool.h */,
+				7B83B35A1E4B60A500F86D27 /* FMDatabasePool.m */,
+				7B83B35B1E4B60A500F86D27 /* FMDatabaseQueue.h */,
+				7B83B35C1E4B60A500F86D27 /* FMDatabaseQueue.m */,
+				7B83B35D1E4B60A500F86D27 /* FMDB.h */,
+				7B83B35E1E4B60A500F86D27 /* FMResultSet.h */,
+				7B83B35F1E4B60A500F86D27 /* FMResultSet.m */,
+				7B83B3541E4B60A400F86D27 /* LogenCode-Bridging-Header.h */,
+			);
+			name = fmdb;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7B6424F11E4743DD004955EE /* LogenCode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B6425041E4743DD004955EE /* Build configuration list for PBXNativeTarget "LogenCode" */;
+			buildPhases = (
+				7B6424EE1E4743DD004955EE /* Sources */,
+				7B6424EF1E4743DD004955EE /* Frameworks */,
+				7B6424F01E4743DD004955EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LogenCode;
+			productName = LogenCode;
+			productReference = 7B6424F21E4743DD004955EE /* LogenCode.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7B6424EA1E4743DD004955EE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = smok95;
+				TargetAttributes = {
+					7B6424F11E4743DD004955EE = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = N46AX9G3T4;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 7B6424ED1E4743DD004955EE /* Build configuration list for PBXProject "LogenCode" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7B6424E91E4743DD004955EE;
+			productRefGroup = 7B6424F31E4743DD004955EE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7B6424F11E4743DD004955EE /* LogenCode */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7B6424F01E4743DD004955EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B83B3661E4B61F700F86D27 /* LogenBranchCode.sqlite in Resources */,
+				7B8141FC1E4C12700067F389 /* BranchCell.xib in Resources */,
+				7B6424FD1E4743DD004955EE /* Assets.xcassets in Resources */,
+				7BD3947B1E4BF87B002B5FAC /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7B6424EE1E4743DD004955EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B8141FA1E4C0FB00067F389 /* BranchCell.swift in Sources */,
+				7B6424F81E4743DD004955EE /* MainTableViewController.swift in Sources */,
+				7B83B3621E4B60A500F86D27 /* FMDatabasePool.m in Sources */,
+				7B83B3491E49F8C100F86D27 /* Branch.swift in Sources */,
+				7B83B3631E4B60A500F86D27 /* FMDatabaseQueue.m in Sources */,
+				7B6424F61E4743DD004955EE /* AppDelegate.swift in Sources */,
+				7B83B3601E4B60A500F86D27 /* FMDatabase.m in Sources */,
+				7B83B3641E4B60A500F86D27 /* FMResultSet.m in Sources */,
+				7B83B3611E4B60A500F86D27 /* FMDatabaseAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7B6425021E4743DD004955EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7B6425031E4743DD004955EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7B6425051E4743DD004955EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = N46AX9G3T4;
+				INFOPLIST_FILE = LogenCode/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.smok95.LogenCode;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LogenCode-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		7B6425061E4743DD004955EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = N46AX9G3T4;
+				INFOPLIST_FILE = LogenCode/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.smok95.LogenCode;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "LogenCode-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7B6424ED1E4743DD004955EE /* Build configuration list for PBXProject "LogenCode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B6425021E4743DD004955EE /* Debug */,
+				7B6425031E4743DD004955EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7B6425041E4743DD004955EE /* Build configuration list for PBXNativeTarget "LogenCode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B6425051E4743DD004955EE /* Debug */,
+				7B6425061E4743DD004955EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7B6424EA1E4743DD004955EE /* Project object */;
+}
