@@ -5,4 +5,4 @@
 
 -Windows 및 iOS 2가지 버전으로 개발되었습니다.
 
-![alt tag](https://raw.githubusercontent.com/smok95/LogenCodeSearch/acbb6b3b1fe32f615e9490feca1f9ab034d1f88b/iOS/LogenCode/LogenCode/LogenCode_for_iOS.png)
+![alt tag](LogenCodeSearch/iOS/LogenCode/LogenCode4iOS.gif)
