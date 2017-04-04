@@ -19,7 +19,7 @@ namespace LogenCode
         {
             InitializeComponent();
 
-            this.Text += " (2015년 8월 현재)";
+            this.Text += " (2017년 4월 현재)";
             //SQLiteConnection.CreateFile("LogenBranchCode.sqlite");
             m_dbConn = new SQLiteConnection("Data Source=LogenBranchCode.sqlite;Version=3;");
             m_dbConn.Open();
@@ -69,9 +69,7 @@ namespace LogenCode
         {
             string msg =
 
-                "수기로 송장을 작성하시는 분들을 위해 제작하였습니다.\r\n" +
-                "불편한 점이나 개선사항은 아래 메일로 연락주시면 반영하겠습니다.\r\n" +
-                "\r\nd0nzs00n@gmail.com\r\n" +
+                "문의 : d0nzs00n@gmail.com\r\n" +
                 "\r\n사용법\r\n" +
                 "예) '인천시 남동구 만수1동' \r\n" +
                 "만수1동 -> 남동구 -> 인천 순서로 검색하시면 됩니다.";
