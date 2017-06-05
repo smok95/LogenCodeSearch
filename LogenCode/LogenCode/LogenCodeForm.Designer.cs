@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogenCodeForm));
             this.m_tbSearch = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.linkLabelAbout = new System.Windows.Forms.LinkLabel();
+            this.label1 = new System.Windows.Forms.Label();
             this.m_listview = new LogenCode.ListViewNF();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -45,7 +45,7 @@
             // m_tbSearch
             // 
             this.m_tbSearch.ImeMode = System.Windows.Forms.ImeMode.Hangul;
-            this.m_tbSearch.Location = new System.Drawing.Point(53, 3);
+            this.m_tbSearch.Location = new System.Drawing.Point(52, 3);
             this.m_tbSearch.Name = "m_tbSearch";
             this.m_tbSearch.Size = new System.Drawing.Size(131, 21);
             this.m_tbSearch.TabIndex = 0;
@@ -62,15 +62,6 @@
             this.panel1.Size = new System.Drawing.Size(661, 27);
             this.panel1.TabIndex = 3;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "검색어";
-            // 
             // linkLabelAbout
             // 
             this.linkLabelAbout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -83,6 +74,15 @@
             this.linkLabelAbout.Text = "프로그램안내";
             this.linkLabelAbout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelAbout_LinkClicked);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "검색어";
+            // 
             // m_listview
             // 
             this.m_listview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -94,13 +94,14 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
-            this.m_listview.Font = new System.Drawing.Font("DotumChe", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.m_listview.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.m_listview.Location = new System.Drawing.Point(0, 30);
             this.m_listview.Name = "m_listview";
             this.m_listview.Size = new System.Drawing.Size(661, 386);
             this.m_listview.TabIndex = 1;
             this.m_listview.UseCompatibleStateImageBehavior = false;
             this.m_listview.View = System.Windows.Forms.View.Details;
+            this.m_listview.MouseDown += new System.Windows.Forms.MouseEventHandler(this.m_listview_MouseDown);
             // 
             // columnHeader1
             // 
@@ -135,6 +136,7 @@
             this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "LogenCodeForm";
             this.Text = "로젠택배 지점코드 검색";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LogenCodeForm_FormClosing);
             this.Load += new System.EventHandler(this.LogenCodeForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
