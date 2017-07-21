@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:LogenCodeX"
+             x:Class="LogenCodeX.MainPage">
+    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+        <SearchBar Placeholder="검색어를 입력하세요..." TextChanged="OnTextChanged" x:Name="searchbar" MinimumHeightRequest="30" HeightRequest="60"/>
+
+        <ListView x:Name="listview" HasUnevenRows="True" CachingStrategy="RecycleElement">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid VerticalOptions="Fill" RowSpacing="0" ColumnSpacing="0" BackgroundColor="{Binding BackColor}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="{Binding Category}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" BackgroundColor="Transparent" HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center" FontSize="Medium" FontAttributes="Bold" Margin="5,0,3,0" TextColor="#555555">
+                                <Label.FontFamily>
+                                    <OnPlatform x:TypeArguments="x:String"  Android="monospace" iOS="Courier New"/>
+                                </Label.FontFamily>
+                            </Label>
+                            <Label Text="{Binding Code}" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" BackgroundColor="Transparent" HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center" FontSize="Medium" FontAttributes="Bold" Margin="0,0,20,0" TextColor="Black">
+                                <Label.FontFamily>
+                                    <OnPlatform x:TypeArguments="x:String"  Android="monospace" iOS="Courier New"/>
+                                </Label.FontFamily>
+                            </Label>
+                            <Label Text="{Binding DisplayArea}" Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent" VerticalTextAlignment="Center" 
+                                   FontSize="Default" Margin="0,0,0,0" FontAttributes="Bold" TextColor="Black"/>
+                            <!--<Label Text="Bottom Left" Grid.Row="1" Grid.Column="0"/>-->
+                            <Label Text="{Binding Area}" Grid.Row="1" Grid.Column="2" BackgroundColor="Transparent" VerticalTextAlignment="Center" 
+                                   TextColor="DarkSlateGray" FontSize="Small"/>
+
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>    
+</ContentPage>
