@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.smok95.logencode" android:versionCode="1" android:versionName="1.0">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.smok95.logencode" android:versionCode="2" android:versionName="1.1">
 	<uses-sdk android:minSdkVersion="15" />
 	<application android:icon="@drawable/icon" android:label="로젠택배 지점코드"></application>
 </manifest>

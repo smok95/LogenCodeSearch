@@ -22,8 +22,12 @@ namespace LogenCodeX.Droid
 			global::Xamarin.Forms.Forms.Init (this, bundle);
 			LoadApplication (new LogenCodeX.App ());
 
-            // statusbar color
-            Window.SetStatusBarColor(Android.Graphics.Color.Argb(255, 0, 0, 0)); 
+            // 17.08.07 fix, NoSuchMethodError exception
+            if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.Lollipop)
+            {
+                // statusbar color
+                Window.SetStatusBarColor(Android.Graphics.Color.Argb(255, 0, 0, 0));
+            }   
         }
 	}
 }
