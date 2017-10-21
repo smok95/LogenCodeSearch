@@ -36,7 +36,7 @@ namespace LogenCodeX
 
         void OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            listview.BeginRefresh();
+            //listview.BeginRefresh();
             
             // 자음 또는 모음만 입력된 경우 제외처리.
             string filteredStr = "";
@@ -64,7 +64,7 @@ namespace LogenCodeX
 
                 listview.ItemsSource = searchList;
             }
-            listview.EndRefresh();
+            //listview.EndRefresh();
 
 
         }
