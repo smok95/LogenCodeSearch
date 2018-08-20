@@ -15,6 +15,7 @@ namespace LogenCode
 {
     /// <summary>
     /// 2017.06.04 kim,jk 사용자의 요청으로 글꼴설정 기능 추가
+    /// 2018.08.20 kim,jk x86으로 빌드해야함.
     /// </summary>
     public partial class LogenCodeForm : Form
     {
@@ -28,7 +29,7 @@ namespace LogenCode
         {
             InitializeComponent();
 
-            this.Text += " (2017년 4월 현재)";
+            this.Text += " (2018년 5월 현재)";
             //SQLiteConnection.CreateFile("LogenBranchCode.sqlite");
             m_dbConn = new SQLiteConnection("Data Source=LogenBranchCode.sqlite;Version=3;");
             m_dbConn.Open();
