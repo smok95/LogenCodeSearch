@@ -33,5 +33,6 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 // 20170604 kim,jk  글꼴변경기능 추가
-[assembly: AssemblyVersion("1.1")]
+// 20180914 kim,jk  초기화면에서 전체리스트 표시되도록 수정
+[assembly: AssemblyVersion("1.2")]
 //[assembly: AssemblyFileVersion("1.1.*")]

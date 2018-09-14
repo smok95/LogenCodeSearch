@@ -29,12 +29,15 @@ namespace LogenCode
         {
             InitializeComponent();
 
-            this.Text += " (2018년 5월 현재)";
+            this.Text += " (2018년 9월 현재)";
             //SQLiteConnection.CreateFile("LogenBranchCode.sqlite");
             m_dbConn = new SQLiteConnection("Data Source=LogenBranchCode.sqlite;Version=3;");
             m_dbConn.Open();
 
             LoadSetting();
+
+            // 전체목록 화면에 표시
+            this.m_tbSearch_TextChanged(m_tbSearch, null);
         }
 
         ~LogenCodeForm()
@@ -54,11 +57,16 @@ namespace LogenCode
             while (rd.Read())
             {
                 Console.WriteLine((string)rd[5]);
-                ListViewItem item = new ListViewItem((string)rd[0]);
-                item.SubItems.Add(rd[1].ToString());
-                item.SubItems.Add((string)rd[2]);
-                item.SubItems.Add((string)rd[3]);
-                item.SubItems.Add((string)rd[4]);
+                string s = (string)rd[0];
+                ListViewItem item = new ListViewItem(s.Trim());
+                s = rd[1].ToString();
+                item.SubItems.Add(s.Trim());
+                s = (string)rd[2];
+                item.SubItems.Add(s.Trim());
+                s = (string)rd[3];
+                item.SubItems.Add(s.Trim());
+                s = (string)rd[4];
+                item.SubItems.Add(s.Trim());
                 string rgb = (string)rd[5];
                 Debug.Print(rgb);
                 item.BackColor = Color.FromArgb(
