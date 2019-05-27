@@ -25,7 +25,7 @@ namespace LogenCodeX
             get
             {
                 if (g_db == null)
-                    g_db = new Data.LogenCodeDB(DependencyService.Get<IFileHelper>().GetLocalFilePath("LogenBranchCode.sqlite"));
+                    g_db = new Data.LogenCodeDB(DependencyService.Get<IFileHelper>().GetLocalFilePath("logencode190527.sqlite"));
                 return g_db;
             }
         }
