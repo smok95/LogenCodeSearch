@@ -128,8 +128,10 @@
     <Compile Include="SplashActivity.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\logencode190527.sqlite" />
-    <None Include="packages.config" />
+    <AndroidAsset Include="Assets\logencode190701.sqlite" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout\SplashScreen.axml">
