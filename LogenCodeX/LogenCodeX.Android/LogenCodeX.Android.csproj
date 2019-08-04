@@ -128,7 +128,7 @@
     <Compile Include="SplashActivity.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\logencode190701.sqlite" />
+    <AndroidAsset Include="Assets\logencode190804.sqlite" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

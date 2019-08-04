@@ -29,7 +29,7 @@ namespace LogenCode
         {
             InitializeComponent();
 
-            this.Text += " (2018년 9월 현재)";
+            this.Text += " (2019년 8월 현재)";
             //SQLiteConnection.CreateFile("LogenBranchCode.sqlite");
             m_dbConn = new SQLiteConnection("Data Source=LogenBranchCode.sqlite;Version=3;");
             m_dbConn.Open();

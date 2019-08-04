@@ -34,5 +34,6 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 // 20170604 kim,jk  글꼴변경기능 추가
 // 20180914 kim,jk  초기화면에서 전체리스트 표시되도록 수정
-[assembly: AssemblyVersion("1.2")]
+// 20190804 kim,jk  버전문구 수정
+[assembly: AssemblyVersion("1.3")]
 //[assembly: AssemblyFileVersion("1.1.*")]
