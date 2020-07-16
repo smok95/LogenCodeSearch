@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class AreaKeyword {
   // 권역이름
   String name;

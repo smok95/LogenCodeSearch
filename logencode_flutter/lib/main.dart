@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'code_list_view.dart';
+import 'juso_page.dart';
+import 'daum_address.dart';
 
 void main() => runApp(LogenCodeApp());
 
@@ -7,8 +11,13 @@ class LogenCodeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: '로젠택배 지점코드 검색',
-      home: HomePage(title: 'Home'),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => HomePage(title: 'Home'),
+        '/dorojuso': (context) => JusoPage(title: 'doro'),
+      },
     );
   }
 }
@@ -27,13 +36,14 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext ctx) {
+    print('HomePage build call');
+    final _backColor = Color.fromARGB(255, 0x61, 0x55, 0x32);
     final _iconColor = Colors.brown[100];
     final _hintTextColor = _iconColor;
     final _textColor = Colors.white;
     return Scaffold(
       appBar: AppBar(
-          backgroundColor:
-              Color.fromARGB(255, 0x61, 0x55, 0x32), //Colors.brown,
+          backgroundColor: _backColor, //Colors.brown,
           titleSpacing: 0.0,
           leading: IconButton(
               icon: Icon(
@@ -61,7 +71,81 @@ class _HomePageState extends State<HomePage> {
                     : null),
           )),
       body: _codeListview,
+      floatingActionButton: Builder(builder: (context) {
+        return FloatingActionButton.extended(
+            backgroundColor: _backColor,
+            onPressed: () {
+              // Scaffold.of(context).hideCurrentSnackBar();
+              _navigateAndSearchAddress(context);
+            },
+            label: Text('도로명주소 검색'),
+            icon: Icon(Icons.search));
+      }),
     );
+  }
+
+  void _navigateAndSearchAddress(BuildContext context) async {
+    final value = await Navigator.pushNamed(context, '/dorojuso');
+    if (value != null) {
+      _searchFromDaumAddress(context, value);
+    }
+
+    FocusScope.of(context).unfocus();
+  }
+
+  void _searchFromDaumAddress(BuildContext context, String src) {
+    if (src == null) return;
+
+    Map<String, dynamic> data = jsonDecode(src);
+    if (data == null) return null;
+
+    var items = DaumAddress.convertFrom(data);
+
+    String keyword = '';
+    String tempKeyword = '';
+    for (var item in items) {
+      if (item == null || item.name.isEmpty) continue;
+      tempKeyword += item.name + ' ';
+      final count = _codeListview.filter(tempKeyword);
+      if (count > 0) {
+        keyword += item.name;
+        if (keyword.length > 0) keyword += ' ';
+      } else {
+        break;
+      }
+    }
+    _textEditor.text = keyword;
+    _search(_textEditor.text);
+
+    // 도로명주소
+    String roadAddr = data['roadAddress'];
+    if (roadAddr.isEmpty) roadAddr = data['autoRoadAddress'];
+
+    // 지번주소
+    String jibunAddr = data['jibunAddress'];
+    if (jibunAddr.isEmpty) jibunAddr = data['autoJibunAddress'];
+
+    final snackBar = SnackBar(
+      action: SnackBarAction(
+          label: "닫기",
+          onPressed: () => Scaffold.of(context).hideCurrentSnackBar()),
+      duration: Duration(seconds: 15),
+      content: Wrap(
+        children: <Widget>[
+          new ListTile(
+              title: Text('검색결과'),
+              subtitle: Text("도로명: ${roadAddr}\n지번: ${jibunAddr}"),
+              onTap: () => {}),
+        ],
+      ),
+    );
+
+    // Find the Scaffold in the widget tree and use
+    // it to show a SnackBar.
+    print("call Scaffold.of...");
+
+    Scaffold.of(context).hideCurrentSnackBar();
+    Scaffold.of(context).showSnackBar(snackBar);
   }
 
   void _search(String keyword) {

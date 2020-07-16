@@ -44,7 +44,15 @@ class _JusoPageState extends State<JusoPage> {
     return WebviewScaffold(
       url: url,
       appBar: AppBar(
-        title: const Text('도로명주소 검색'),
+        title: const ListTile(
+            title: Text(
+              '도로명주소 검색',
+              style: TextStyle(color: Colors.white),
+            ),
+            subtitle: Text(
+              '▼ 아래 검색란에 입력하세요',
+              style: TextStyle(color: Colors.white70),
+            )),
         backgroundColor: _backColor,
       ),
       withZoom: true,
@@ -58,7 +66,7 @@ class _JusoPageState extends State<JusoPage> {
           },
         ),
       ]),
-     // hidden: true,
+      // hidden: true,
       initialChild: Container(
         color: Colors.grey,
         child: const Center(

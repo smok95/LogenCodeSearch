@@ -11,8 +11,8 @@ class CodeListView extends StatefulWidget {
   @override
   _ListViewState createState() => _state;
 
-  void filter(String text) {
-    _state.filter(text);
+  int filter(String text) {
+    return _state.filter(text);
   }
 }
 
@@ -51,7 +51,7 @@ class _ListViewState extends State<CodeListView> {
     return text;
   }
 
-  void filter(String text) {
+  int filter(String text) {
     _results.clear();
 
     // 문자열에서 자음/모음 제거
@@ -65,6 +65,8 @@ class _ListViewState extends State<CodeListView> {
         _results.removeWhere((element) => !element.contains(keyword));
       }
     });
+
+    return _results.length;
   }
 
   @override
