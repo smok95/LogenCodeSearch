@@ -8,4 +8,5 @@
 ![alt tag](https://raw.githubusercontent.com/smok95/LogenCodeSearch/master/logencode_flutter/logencode_flutter.gif)
 
 # 안드로이드 버전
-https://play.google.com/store/apps/details?id=com.smok95.logencode
+<a href="https://play.google.com/store/apps/details?id=com.smok95.logencode"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="75"></a>
+
