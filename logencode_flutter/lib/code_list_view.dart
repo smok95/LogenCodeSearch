@@ -71,54 +71,64 @@ class _ListViewState extends State<CodeListView> {
 
   @override
   Widget build(BuildContext ctx) {
-    const titleStyle = TextStyle(fontWeight: FontWeight.bold);
+    final itemCount = _results?.length ?? 0;
 
-    return ListView.builder(
-      itemCount: _results?.length ?? 0,
-      itemBuilder: (context, index) {
-        final LogenCode code = _results[index];
+    return itemCount > 0
+        ? ListView.builder(
+            itemCount: itemCount,
+            itemBuilder: (context, index) {
+              final LogenCode code = _results[index];
 
-        // 앞에 붙이는 ff는 투명도
-        final color = Color(int.parse(code.color, radix: 16)).withOpacity(1.0);
+              // 앞에 붙이는 ff는 투명도
+              final color =
+                  Color(int.parse(code.color, radix: 16)).withOpacity(1.0);
 
-        const d = 0.8;
-        final leadingStyle = TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-            fontFeatures: [FontFeature.tabularFigures()],
-            color: color,
-            fontFamily: 'Monospace',
-            shadows: [
-              Shadow(offset: Offset(-d, -d), color: Colors.black),
-              Shadow(offset: Offset(d, -d), color: Colors.black),
-              Shadow(offset: Offset(d * 2, d * 2), color: Colors.black),
-              Shadow(offset: Offset(-d, d), color: Colors.black),
-            ]);
+              const d = 0.8;
+              final leadingStyle = TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  fontFeatures: [FontFeature.tabularFigures()],
+                  color: color,
+                  fontFamily: 'Monospace',
+                  shadows: [
+                    Shadow(offset: Offset(-d, -d), color: Colors.black),
+                    Shadow(offset: Offset(d, -d), color: Colors.black),
+                    Shadow(offset: Offset(d * 2, d * 2), color: Colors.black),
+                    Shadow(offset: Offset(-d, d), color: Colors.black),
+                  ]);
 
-        return Ink(
-            color: color.withAlpha(90),
-            //color: Colors.white,// Color.fromARGB(255, 0x61, 0x55, 0x32),
-            child: Card(
-                //color: TinyColor(color).brighten(45).color,
-                child: ListTile(
-              title: RichText(
-                text: TextSpan(style: leadingStyle, children: <InlineSpan>[
-                  TextSpan(text: '${code.category} ${code.code}'),
-                  WidgetSpan(
-                    alignment: PlaceholderAlignment.middle,
-                    child: Text(
-                      '    ${code.region1}(${code.region2})',
-                      style: TextStyle(
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black87),
+              return Ink(
+                  color: color.withAlpha(90),
+                  //color: Colors.white,// Color.fromARGB(255, 0x61, 0x55, 0x32),
+                  child: Card(
+                      //color: TinyColor(color).brighten(45).color,
+                      child: ListTile(
+                    title: RichText(
+                      text:
+                          TextSpan(style: leadingStyle, children: <InlineSpan>[
+                        TextSpan(text: '${code.category} ${code.code}'),
+                        WidgetSpan(
+                          alignment: PlaceholderAlignment.middle,
+                          child: Text(
+                            '    ${code.region1}(${code.region2})',
+                            style: TextStyle(
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black87),
+                          ),
+                        )
+                      ]),
                     ),
-                  )
-                ]),
-              ),
-              subtitle: Text(code.area),
-            )));
-      },
-    );
+                    subtitle: Text(code.area),
+                  )));
+            },
+          )
+        : Center(
+            child: Text(
+              '검색된 지점코드가 없습니다.\n\n택배조회인 경우에는 \n운송장번호 11자리를 입력해주세요',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 15),
+            ),
+          );
   }
 }

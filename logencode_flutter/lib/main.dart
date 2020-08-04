@@ -1,164 +1,116 @@
-import 'dart:convert';
-
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
-import 'code_list_view.dart';
-import 'juso_page.dart';
-import 'daum_address.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get.dart';
+import 'package:logencode_flutter/logencode_search_page.dart';
+import 'package:logencode_flutter/settings_page.dart';
+import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-void main() => runApp(LogenCodeApp());
+import 'my_admob.dart';
+import 'juso_page.dart';
+import 'my_local.dart';
+import 'my_private_data.dart';
+
+final backColor = Color.fromARGB(255, 0x61, 0x55, 0x32);
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  MyAdmob.initialize();
+
+  runApp(LogenCodeApp());
+}
 
 class LogenCodeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      onGenerateTitle: (BuildContext context) =>
+          MyLocal.of(context).text('title'),
+      localizationsDelegates: [
+        const MyLocalDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('ko', ''),
+        const Locale('en', ''),
+      ],
       debugShowCheckedModeBanner: false,
-      title: '로젠택배 지점코드 검색',
       initialRoute: '/',
       routes: {
-        '/': (context) => HomePage(title: 'Home'),
-        '/dorojuso': (context) => JusoPage(title: 'doro'),
+        '/': (context) => _buildHomePage(),
+        '/dorojuso': (context) => _buildDaumJusoPage(),
       },
     );
   }
-}
 
-class HomePage extends StatefulWidget {
-  HomePage({Key key, this.title}) : super(key: key);
-  final String title;
+  Widget _buildAdBanner() {
+    final banner =
+        MyAdmob.createAdmobBanner(adSize: AdmobBannerSize.FULL_BANNER);
+    return SizedBox(
+      height: banner.adSize.height.toDouble(),
+      child: Center(child: banner),
+    );
+  }
 
-  _HomePageState createState() => _HomePageState();
-}
+  Widget _buildAdBanner2() {
+    final banner =
+        MyAdmob.createAdmobBanner2(adSize: AdmobBannerSize.FULL_BANNER);
+    return SizedBox(
+      height: banner.adSize.height.toDouble(),
+      child: Center(child: banner),
+    );
+  }
 
-class _HomePageState extends State<HomePage> {
-  var _textEditor = TextEditingController();
-  var _showClearBtn = false;
-  var _codeListview = CodeListView();
+  void _onOpenSettings() {
+    Get.to(SettingsPage(onSettingChange: (name, value) async {
+      if (name == 'share app') {
+        Share.share(MyPrivateData.playStoreUrl);
+      } else if (name == 'rate review') {
+        final playstoreUrl = MyPrivateData.playStoreUrl;
+        if (await canLaunch(playstoreUrl)) {
+          await launch(playstoreUrl);
+        }
+      } else if (name == 'more apps') {
+        final devPage = MyPrivateData.googlePlayDeveloperPageUrl;
+        if (await canLaunch(devPage)) {
+          await launch(devPage);
+        }
+      } else if (name == 'open logen homepage') {
+        final iLogen = 'https://www.ilogen.com/m';
+        if (await canLaunch(iLogen)) {
+          await launch(iLogen);
+        }
+      }
+    }));
+  }
 
-  @override
-  Widget build(BuildContext ctx) {
-    print('HomePage build call');
-    final _backColor = Color.fromARGB(255, 0x61, 0x55, 0x32);
-    final _iconColor = Colors.brown[100];
-    final _hintTextColor = _iconColor;
-    final _textColor = Colors.white;
+  Widget _buildDaumJusoPage() {
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: _backColor, //Colors.brown,
-          titleSpacing: 0.0,
-          leading: IconButton(
-              icon: Icon(
-                Icons.search,
-                color: _iconColor,
-              ),
-              onPressed: null),
-          title: TextField(
-            controller: _textEditor,
-            onChanged: (val) {
-              _search(val);
-            },
-            style: TextStyle(color: _textColor),
-            decoration: InputDecoration(
-                hintText: "검색어를 입력하세요...",
-                hintStyle: TextStyle(color: _hintTextColor),
-                border: InputBorder.none,
-                suffixIcon: _showClearBtn
-                    ? IconButton(
-                        icon: Icon(Icons.clear, color: _iconColor),
-                        onPressed: () {
-                          _textEditor.clear();
-                          _search('');
-                        })
-                    : null),
-          )),
-      body: _codeListview,
-      floatingActionButton: Builder(builder: (context) {
-        return FloatingActionButton.extended(
-            backgroundColor: _backColor,
-            onPressed: () {
-              // Scaffold.of(context).hideCurrentSnackBar();
-              _navigateAndSearchAddress(context);
-            },
-            label: Text('도로명주소 검색'),
-            icon: Icon(Icons.search));
-      }),
-    );
-  }
-
-  void _navigateAndSearchAddress(BuildContext context) async {
-    final value = await Navigator.pushNamed(context, '/dorojuso');
-    if (value != null) {
-      _searchFromDaumAddress(context, value);
-    }
-
-    FocusScope.of(context).unfocus();
-  }
-
-  void _searchFromDaumAddress(BuildContext context, String src) {
-    if (src == null) return;
-
-    Map<String, dynamic> data = jsonDecode(src);
-    if (data == null) return null;
-
-    var items = DaumAddress.convertFrom(data);
-
-    String keyword = '';
-    String tempKeyword = '';
-    for (var item in items) {
-      if (item == null || item.name.isEmpty) continue;
-      tempKeyword += item.name + ' ';
-      final count = _codeListview.filter(tempKeyword);
-      if (count > 0) {
-        keyword += item.name;
-        if (keyword.length > 0) keyword += ' ';
-      } else {
-        break;
-      }
-    }
-    _textEditor.text = keyword;
-    _search(_textEditor.text);
-
-    // 도로명주소
-    String roadAddr = data['roadAddress'];
-    if (roadAddr.isEmpty) roadAddr = data['autoRoadAddress'];
-
-    // 지번주소
-    String jibunAddr = data['jibunAddress'];
-    if (jibunAddr.isEmpty) jibunAddr = data['autoJibunAddress'];
-
-    final snackBar = SnackBar(
-      action: SnackBarAction(
-          label: "닫기",
-          onPressed: () => Scaffold.of(context).hideCurrentSnackBar()),
-      duration: Duration(seconds: 15),
-      content: Wrap(
-        children: <Widget>[
-          new ListTile(
-              title: Text('검색결과'),
-              subtitle: Text("도로명: ${roadAddr}\n지번: ${jibunAddr}"),
-              onTap: () => {}),
+      body: SafeArea(
+          child: Column(
+        children: [
+          Expanded(child: JusoPage(title: 'doro')),
+          Divider(height: 1, thickness: 1, color: Colors.black),
+          _buildAdBanner2(),
         ],
-      ),
+      )),
     );
-
-    // Find the Scaffold in the widget tree and use
-    // it to show a SnackBar.
-    print("call Scaffold.of...");
-
-    Scaffold.of(context).hideCurrentSnackBar();
-    Scaffold.of(context).showSnackBar(snackBar);
   }
 
-  void _search(String keyword) {
-    //print("'$keyword'");
-
-    var showClearBtn = keyword.isEmpty ? false : true;
-
-    setState(() {
-      _codeListview.filter(keyword);
-
-      if (showClearBtn != _showClearBtn) {
-        _showClearBtn = showClearBtn;
-      }
-    });
+  Widget _buildHomePage() {
+    return Scaffold(
+      body: SafeArea(
+          child: Column(
+        children: [
+          Expanded(
+              child: LogencodeSearchPage(
+                  title: 'Home', onOpenSettings: _onOpenSettings)),
+          Divider(height: 1, thickness: 1, color: Colors.black),
+          _buildAdBanner(),
+        ],
+      )),
+    );
   }
 }

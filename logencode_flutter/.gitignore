@@ -36,6 +36,9 @@ key.properties
 # Web related
 lib/generated_plugin_registrant.dart
 
+# Private data
+lib/my_private_data.dart
+
 # Symbolication related
 app.*.symbols
 

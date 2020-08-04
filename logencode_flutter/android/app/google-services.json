@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "662625002672",
+    "firebase_url": "https://logencode.firebaseio.com",
+    "project_id": "logencode",
+    "storage_bucket": "logencode.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662625002672:android:0b51a3a01a57126a930775",
+        "android_client_info": {
+          "package_name": "com.smok95.logencode"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "662625002672-lt60s24deh4mu1c1359sdv8hs96ea3f3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIimbse5hj-Prahekh6af3qWVgzIvNINU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "662625002672-lt60s24deh4mu1c1359sdv8hs96ea3f3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
