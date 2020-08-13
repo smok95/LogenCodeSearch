@@ -168,10 +168,17 @@ class _LogencodeSearchPageState extends State<LogencodeSearchPage> {
     _snackbar(context, '검색결과', '도로명: $roadAddr\n지번: $jibunAddr');
   }
 
-  bool _isTrackingNumber(final String value) {
+  List _isTrackingNumber(String value) {
+    if (value == null) return [false, value];
+
+    // 공백제거
+    value = value.replaceAll(' ', '');
+
     // 로젠택배 운송자번호는 11자리 숫자임.
-    if (value == null || value.length != 11) return false;
-    return int.tryParse(value) != null;
+    if (value.length != 11) return [false, value];
+
+    final isNumber = int.tryParse(value) != null;
+    return [isNumber, value];
     //https: //www.ilogen.com/web/personal/trace/95825729134
   }
 
@@ -186,8 +193,11 @@ class _LogencodeSearchPageState extends State<LogencodeSearchPage> {
     var showClearBtn = keyword.isEmpty ? false : true;
 
     setState(() {
-      if (_isTrackingNumber(keyword)) {
-        _trackingNumber = keyword;
+      final result = _isTrackingNumber(keyword);
+
+      if (result[0] == true) {
+        _trackingNumber = result[1];
+        _textEditor.text = _trackingNumber;
         FocusScope.of(context).unfocus();
       } else {
         _trackingNumber = '';
