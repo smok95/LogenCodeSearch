@@ -1,8 +1,11 @@
 import 'dart:convert';
 import 'dart:ui';
 
+import 'package:bordered_text/bordered_text.dart';
+import 'package:draggable_scrollbar/draggable_scrollbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:logencode_flutter/MyColors.dart';
 
 import 'logen_code.dart';
 
@@ -19,6 +22,7 @@ class CodeListView extends StatefulWidget {
 class _ListViewState extends State<CodeListView> {
   List<LogenCode> _source = List<LogenCode>();
   List<LogenCode> _results;
+  ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
@@ -69,60 +73,88 @@ class _ListViewState extends State<CodeListView> {
     return _results.length;
   }
 
+  Widget _buildCountListView(int count) {
+    return Card(
+        shadowColor: Colors.transparent, child: Center(child: Text("$count건")));
+  }
+
+  Widget _buildListTile(final LogenCode code, final Color color) {
+    final leadingStyle = TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 20,
+        color: color,
+        fontFamily: 'Monospace');
+
+    return ListTile(
+      dense: true,
+      title: Row(children: [
+        Expanded(
+            child: RichText(
+          text: TextSpan(style: leadingStyle, children: <InlineSpan>[
+            WidgetSpan(
+                child: BorderedText(
+                    strokeColor: Colors.grey[800],
+                    strokeWidth: 3,
+                    child: Text('${code.category} ${code.code}',
+                        style: leadingStyle))),
+            WidgetSpan(
+              alignment: PlaceholderAlignment.middle,
+              child: Text(
+                '   ${code.region1}(${code.region2})',
+                style: const TextStyle(
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black87),
+              ),
+            )
+          ]),
+        )),
+        Text(
+          '${code.branch}',
+          style: const TextStyle(color: Colors.black45, fontSize: 13),
+        )
+      ]),
+      subtitle: Text(
+        code.area,
+        style: const TextStyle(fontSize: 14),
+      ),
+    );
+  }
+
+  Widget _buildListView(final int itemCount) {
+    return DraggableScrollbar.arrows(
+        controller: _scrollController,
+        backgroundColor: MyColors.backgroundColor,
+        padding: EdgeInsets.all(5),
+        child: ListView.builder(
+          controller: _scrollController,
+          itemCount: itemCount + 1, // +1은 count 표시
+          itemBuilder: (context, index) {
+            if (index == itemCount) {
+              return _buildCountListView(itemCount);
+            }
+
+            final LogenCode code = _results[index];
+
+            // 앞에 붙이는 ff는 투명도
+            final color =
+                Color(int.parse(code.color, radix: 16)).withOpacity(1.0);
+
+            return Ink(
+                color: color.withAlpha(90),
+                child: Card(
+                    margin: EdgeInsets.all(2),
+                    child: _buildListTile(code, color)));
+          },
+        ));
+  }
+
   @override
   Widget build(BuildContext ctx) {
     final itemCount = _results?.length ?? 0;
 
     return itemCount > 0
-        ? ListView.builder(
-            itemCount: itemCount,
-            itemBuilder: (context, index) {
-              final LogenCode code = _results[index];
-
-              // 앞에 붙이는 ff는 투명도
-              final color =
-                  Color(int.parse(code.color, radix: 16)).withOpacity(1.0);
-
-              const d = 0.8;
-              final leadingStyle = TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  fontFeatures: [FontFeature.tabularFigures()],
-                  color: color,
-                  fontFamily: 'Monospace',
-                  shadows: [
-                    Shadow(offset: Offset(-d, -d), color: Colors.black),
-                    Shadow(offset: Offset(d, -d), color: Colors.black),
-                    Shadow(offset: Offset(d * 2, d * 2), color: Colors.black),
-                    Shadow(offset: Offset(-d, d), color: Colors.black),
-                  ]);
-
-              return Ink(
-                  color: color.withAlpha(90),
-                  //color: Colors.white,// Color.fromARGB(255, 0x61, 0x55, 0x32),
-                  child: Card(
-                      //color: TinyColor(color).brighten(45).color,
-                      child: ListTile(
-                    title: RichText(
-                      text:
-                          TextSpan(style: leadingStyle, children: <InlineSpan>[
-                        TextSpan(text: '${code.category} ${code.code}'),
-                        WidgetSpan(
-                          alignment: PlaceholderAlignment.middle,
-                          child: Text(
-                            '    ${code.region1}(${code.region2})',
-                            style: TextStyle(
-                                fontSize: 15.0,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black87),
-                          ),
-                        )
-                      ]),
-                    ),
-                    subtitle: Text(code.area),
-                  )));
-            },
-          )
+        ? _buildListView(itemCount)
         : Center(
             child: Text(
               '검색된 지점코드가 없습니다.\n\n택배조회인 경우에는 \n운송장번호 11자리를 입력해주세요',

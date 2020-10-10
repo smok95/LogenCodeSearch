@@ -12,7 +12,6 @@ import 'juso_page.dart';
 import 'my_local.dart';
 import 'my_private_data.dart';
 
-final backColor = Color.fromARGB(255, 0x61, 0x55, 0x32);
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 

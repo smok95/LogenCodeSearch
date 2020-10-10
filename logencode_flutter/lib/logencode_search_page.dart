@@ -54,7 +54,8 @@ class _LogencodeSearchPageState extends State<LogencodeSearchPage> {
               // Scaffold.of(context).hideCurrentSnackBar();
               _navigateAndSearchAddress(context);
             },
-            label: Text('도로명주소 검색'),
+            tooltip: '도로명주소 검색',
+            label: Text('도로명 검색'),
             icon: Icon(Icons.search));
       }),
     );
