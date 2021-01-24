@@ -18,11 +18,23 @@ class MyAdmob {
 
   static String get appId => MyPrivateData.adMobAppId;
   static String get unitId {
-    return Foundation.kDebugMode ? testAdUnitId : MyPrivateData.AdMobUnitId1;
+    if (Foundation.kDebugMode) {
+      return testAdUnitId;
+    } else {
+      return Platform.isAndroid
+          ? MyPrivateData.adMobUnitId1AOS
+          : MyPrivateData.adMobUnitId1IOS;
+    }
   }
 
   static String get unitId2 {
-    return Foundation.kDebugMode ? testAdUnitId : MyPrivateData.AdmobUnitId2;
+    if (Foundation.kDebugMode) {
+      return testAdUnitId;
+    } else {
+      return Platform.isAndroid
+          ? MyPrivateData.admobUnitId2AOS
+          : MyPrivateData.adMobUnitId1IOS;
+    }
   }
 
   /// Admob 배너 생성
@@ -34,10 +46,6 @@ class MyAdmob {
   static AdmobBanner createAdmobBanner2(
       {AdmobBannerSize adSize = AdmobBannerSize.FULL_BANNER}) {
     return AdmobBanner(adUnitId: unitId2, adSize: adSize);
-  }
-
-  static void initialize() {
-    Admob.initialize(appId);
   }
 
   /// 화면크기에 맞는 배너 높이값을 구한다.

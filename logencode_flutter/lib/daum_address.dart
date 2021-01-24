@@ -15,17 +15,15 @@ class AreaKeyword {
 }
 
 class DaumAddress {
-  /**
-   * 다음 도로명주소 API의 응답값[source]을
-   * 지점코드를 검색할 수 있는 형태[List<AreaKeyword>]로 변환한다.
-   */
+  /// 다음 도로명주소 API의 응답값[source]을
+  /// 지점코드를 검색할 수 있는 형태[List<AreaKeyword>]로 변환한다.
   static List<AreaKeyword> convertFrom(Map<String, dynamic> data) {
     if (data == null) return null;
 
     final String sido = data['sido'];
     final String sigungu = data['sigungu'];
 
-    print('sido is ${sido}');
+    print('sido is $sido');
 
     List<AreaKeyword> area = [
       AreaKeyword('', null), // 권역1(도, 광역시, 특별시 등)

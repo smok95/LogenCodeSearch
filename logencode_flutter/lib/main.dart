@@ -12,10 +12,14 @@ import 'juso_page.dart';
 import 'my_local.dart';
 import 'my_private_data.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  MyAdmob.initialize();
+  Admob.initialize();
+  // Run this before displaying any ad.
+
+  // for iOS
+  await Admob.requestTrackingAuthorization();
 
   runApp(LogenCodeApp());
 }
@@ -45,6 +49,10 @@ class LogenCodeApp extends StatelessWidget {
   }
 
   Widget _buildAdBanner() {
+    if (MyPrivateData.hideAd) {
+      return SizedBox.shrink();
+    }
+
     final banner =
         MyAdmob.createAdmobBanner(adSize: AdmobBannerSize.FULL_BANNER);
     return SizedBox(
@@ -54,6 +62,9 @@ class LogenCodeApp extends StatelessWidget {
   }
 
   Widget _buildAdBanner2() {
+    if (MyPrivateData.hideAd) {
+      return SizedBox.shrink();
+    }
     final banner =
         MyAdmob.createAdmobBanner2(adSize: AdmobBannerSize.FULL_BANNER);
     return SizedBox(
@@ -88,28 +99,31 @@ class LogenCodeApp extends StatelessWidget {
   Widget _buildDaumJusoPage() {
     return Scaffold(
       body: SafeArea(
+          top: false,
           child: Column(
-        children: [
-          Expanded(child: JusoPage(title: 'doro')),
-          Divider(height: 1, thickness: 1, color: Colors.black),
-          _buildAdBanner2(),
-        ],
-      )),
+            children: [
+              Expanded(child: JusoPage(title: 'doro')),
+              Divider(height: 1, thickness: 1, color: Colors.black),
+              _buildAdBanner2(),
+            ],
+          )),
     );
   }
 
   Widget _buildHomePage() {
     return Scaffold(
       body: SafeArea(
-          child: Column(
-        children: [
-          Expanded(
-              child: LogencodeSearchPage(
-                  title: 'Home', onOpenSettings: _onOpenSettings)),
-          Divider(height: 1, thickness: 1, color: Colors.black),
-          _buildAdBanner(),
-        ],
-      )),
+        top: false,
+        child: Column(
+          children: [
+            Expanded(
+                child: LogencodeSearchPage(
+                    title: 'Home', onOpenSettings: _onOpenSettings)),
+            Divider(height: 1, thickness: 1, color: Colors.black),
+            _buildAdBanner(),
+          ],
+        ),
+      ),
     );
   }
 }

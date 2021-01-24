@@ -2,7 +2,8 @@ import 'dart:convert';
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:logencode_flutter/controller/search_controller.dart';
+import 'package:logencode_flutter/model/logen_code.dart';
 
 import 'parcel_tracking_vew.dart';
 import 'code_list_view.dart';
@@ -10,6 +11,7 @@ import 'daum_address.dart';
 
 final backColor = Color.fromARGB(255, 0x61, 0x55, 0x32);
 
+/// 로젠택배 지점코드 검색 페이지
 class LogencodeSearchPage extends StatefulWidget {
   /// 설정창 열기 이벤트
   final VoidCallback onOpenSettings;
@@ -24,17 +26,28 @@ class LogencodeSearchPage extends StatefulWidget {
 class _LogencodeSearchPageState extends State<LogencodeSearchPage> {
   var _textEditor = TextEditingController();
   var _showClearBtn = false;
-  var _codeListview = CodeListView();
+  final _controller = SearchController();
+  var _result = List<LogenCode>();
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller.initialize().whenComplete(() {
+      setState(() {
+        _result = _controller.data;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext ctx) {
     final iconColor = Colors.brown[100];
-
-    //final body = _trackingNumber.isEmpty ? _codeListview : _buildTrackingView();
     final index = _trackingNumber.isEmpty ? 0 : 1;
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: backColor, //Colors.brown,
+        backgroundColor: backColor,
         titleSpacing: 5.0,
         title: _buildSearchBar(),
         actions: [
@@ -45,13 +58,15 @@ class _LogencodeSearchPageState extends State<LogencodeSearchPage> {
       ),
       body: IndexedStack(
         index: index,
-        children: [_codeListview, _buildTrackingView()],
+        children: [
+          _buildCodeListView(),
+          _buildTrackingView(),
+        ],
       ),
       floatingActionButton: Builder(builder: (context) {
         return FloatingActionButton.extended(
             backgroundColor: backColor,
             onPressed: () {
-              // Scaffold.of(context).hideCurrentSnackBar();
               _navigateAndSearchAddress(context);
             },
             tooltip: '도로명주소 검색',
@@ -65,6 +80,20 @@ class _LogencodeSearchPageState extends State<LogencodeSearchPage> {
     return _trackingNumber.isEmpty
         ? Center(child: Text('운송장번호를 입력해주세요'))
         : ParcelTrackingView(_trackingNumber);
+  }
+
+  Widget _buildCodeListView() {
+    if (_result.isEmpty) {
+      return Center(
+        child: Text(
+          '검색된 지점코드가 없습니다.\n\n택배조회인 경우에는 \n운송장번호 11자리를 입력해주세요',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 15),
+        ),
+      );
+    } else {
+      return CodeListView(_result);
+    }
   }
 
   Widget _buildSearchBar() {
@@ -81,7 +110,6 @@ class _LogencodeSearchPageState extends State<LogencodeSearchPage> {
           filled: true,
           fillColor: Colors.white12,
           prefixIcon: Icon(Icons.search, color: iconColor),
-          //border: InputBorder.none,
           border: OutlineInputBorder(
               borderSide: BorderSide.none,
               borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -147,8 +175,9 @@ class _LogencodeSearchPageState extends State<LogencodeSearchPage> {
     for (var item in items) {
       if (item == null || item.name.isEmpty) continue;
       tempKeyword += item.name + ' ';
-      final count = _codeListview.filter(tempKeyword);
-      if (count > 0) {
+
+      final result = _controller.search(tempKeyword);
+      if (result.length > 0) {
         keyword += item.name;
         if (keyword.length > 0) keyword += ' ';
       } else {
@@ -183,14 +212,8 @@ class _LogencodeSearchPageState extends State<LogencodeSearchPage> {
     //https: //www.ilogen.com/web/personal/trace/95825729134
   }
 
-  bool _isNumber(final String value) {
-    if (value == null) return false;
-    return int.tryParse(value) != null;
-  }
-
+  /// 검색
   void _search(String keyword) {
-    //print("'$keyword'");
-
     var showClearBtn = keyword.isEmpty ? false : true;
 
     setState(() {
@@ -202,7 +225,7 @@ class _LogencodeSearchPageState extends State<LogencodeSearchPage> {
         FocusScope.of(context).unfocus();
       } else {
         _trackingNumber = '';
-        _codeListview.filter(keyword);
+        _result = _controller.search(keyword);
       }
 
       if (showClearBtn != _showClearBtn) {

@@ -11,7 +11,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>logencode_flutter</string>
+	<string>로젠택배 지점코드</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -41,5 +41,18 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<true/>
+	</dict>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-0843163070431190~8233370163</string>
+	<key>io.flutter.embedded_views_preview</key>
+	<true/>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>추적 허용을 하시면 맞춤 광고를 받아보실 수 있습니다.</string>
 </dict>
 </plist>

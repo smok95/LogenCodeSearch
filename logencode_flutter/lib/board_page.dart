@@ -10,7 +10,6 @@ class BoardPage extends StatefulWidget {
 }
 
 class _BoardPageState extends State<BoardPage> {
-  final _webviewPlugin = FlutterWebviewPlugin();
   @override
   Widget build(BuildContext ctx) {
     return _buildWebview(ctx);
