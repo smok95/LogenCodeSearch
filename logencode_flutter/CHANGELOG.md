@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 2.6.1+21 - 2021-05-09
+## Changed
+- intl: 0.16.1 -> ^0.17.0
+- codelist.json , 도로명검색이 되지 않아 값에 '기흥구[]'문구 추가
+### Added
+
+
 ## 2.6.0+20 - 2021-01-24
 - android는 미출시
 

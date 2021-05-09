@@ -127,23 +127,32 @@ class _LogencodeSearchPageState extends State<LogencodeSearchPage> {
   }
 
   void _snackbar(BuildContext context, String title, String subtitle) {
+    final textStyle = TextStyle(color: Colors.white);
     final snackBar = SnackBar(
       action: SnackBarAction(
           label: "닫기",
-          onPressed: () => Scaffold.of(context).hideCurrentSnackBar()),
+          onPressed: () => ScaffoldMessenger.of(context).hideCurrentSnackBar()),
       duration: Duration(seconds: 15),
       content: Wrap(
         children: <Widget>[
-          new ListTile(
-              title: Text(title), subtitle: Text(subtitle), onTap: () => {}),
+          ListTile(
+              title: Text(
+                title,
+                style: textStyle,
+              ),
+              subtitle: Text(
+                subtitle,
+                style: textStyle,
+              ),
+              onTap: () => {}),
         ],
       ),
     );
 
     // Find the Scaffold in the widget tree and use
     // it to show a SnackBar.
-    Scaffold.of(context).hideCurrentSnackBar();
-    Scaffold.of(context).showSnackBar(snackBar);
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   void _navigateAndSearchAddress(BuildContext context) async {
