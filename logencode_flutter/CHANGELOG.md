@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 2.7.0+24 - 2021-08-02
+### Changed
+- 2021.08.02일자 코드표로 갱신
+
 ## 2.6.3+23 - 2021-05-25
 ## Changed
 - 광고 숨김설정 해제...
