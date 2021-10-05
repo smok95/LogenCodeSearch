@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## 2.7.1+25 - 2021-10-05 (Only Android)
+### Changed
+- AdMob 배너광고 사이즈 규정에 맞게 수정
 
 ## 2.7.0+24 - 2021-08-02
 ### Changed

@@ -42,35 +42,27 @@ class LogenCodeApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => _buildHomePage(),
-        '/dorojuso': (context) => _buildDaumJusoPage(),
+        '/': (context) => _buildHomePage(context),
+        '/dorojuso': (context) => _buildDaumJusoPage(context),
       },
     );
   }
 
-  Widget _buildAdBanner() {
+  Widget _buildAdBanner(BuildContext context) {
     if (MyPrivateData.hideAd) {
       return SizedBox.shrink();
     }
 
-    final banner =
-        MyAdmob.createAdmobBanner(adSize: AdmobBannerSize.FULL_BANNER);
-    return SizedBox(
-      height: banner.adSize.height.toDouble(),
-      child: Center(child: banner),
-    );
+    final banner = MyAdmob.createAdmobAdaptiveBanner(MyAdmob.unitId, context);
+    return Container(color: Colors.grey[50], child: banner);
   }
 
-  Widget _buildAdBanner2() {
+  Widget _buildAdBanner2(BuildContext context) {
     if (MyPrivateData.hideAd) {
       return SizedBox.shrink();
     }
-    final banner =
-        MyAdmob.createAdmobBanner2(adSize: AdmobBannerSize.FULL_BANNER);
-    return SizedBox(
-      height: banner.adSize.height.toDouble(),
-      child: Center(child: banner),
-    );
+    final banner = MyAdmob.createAdmobAdaptiveBanner(MyAdmob.unitId2, context);
+    return Container(color: Colors.grey[50], child: banner);
   }
 
   void _onOpenSettings() {
@@ -96,7 +88,7 @@ class LogenCodeApp extends StatelessWidget {
     }));
   }
 
-  Widget _buildDaumJusoPage() {
+  Widget _buildDaumJusoPage(BuildContext context) {
     return Scaffold(
       body: SafeArea(
           top: false,
@@ -104,13 +96,13 @@ class LogenCodeApp extends StatelessWidget {
             children: [
               Expanded(child: JusoPage(title: 'doro')),
               Divider(height: 1, thickness: 1, color: Colors.black),
-              _buildAdBanner2(),
+              _buildAdBanner2(context),
             ],
           )),
     );
   }
 
-  Widget _buildHomePage() {
+  Widget _buildHomePage(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         top: false,
@@ -120,7 +112,7 @@ class LogenCodeApp extends StatelessWidget {
                 child: LogencodeSearchPage(
                     title: 'Home', onOpenSettings: _onOpenSettings)),
             Divider(height: 1, thickness: 1, color: Colors.black),
-            _buildAdBanner(),
+            _buildAdBanner(context),
           ],
         ),
       ),

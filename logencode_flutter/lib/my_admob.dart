@@ -48,6 +48,20 @@ class MyAdmob {
     return AdmobBanner(adUnitId: unitId2, adSize: adSize);
   }
 
+  /// Admob Adaptive 배너 생성
+  static AdmobBanner createAdmobAdaptiveBanner(
+      String unitId, BuildContext context) {
+    final width = MediaQuery.of(context).size.width.toInt();
+    final adSize = AdmobBannerSize.ADAPTIVE_BANNER(width: width);
+    print("createAdmobAdaptiveBanner, unitId=$unitId");
+    return AdmobBanner(adUnitId: unitId, adSize: adSize);
+  }
+
+  // Adaptive, Smart Banner와 같이 크기가 고정이 아닌 배너의 크기를 구한다.
+  static Future<Size> getBannerSize(AdmobBannerSize admobBannerSize) async {
+    return await Admob.bannerSize(admobBannerSize);
+  }
+
   /// 화면크기에 맞는 배너 높이값을 구한다.
   double getSmartBannerHeight(BuildContext context) {
     // 참고페이지 : https://stackoverflow.com/questions/50935918/how-to-get-banner-size-of-smart-banner
