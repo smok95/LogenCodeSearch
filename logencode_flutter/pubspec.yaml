@@ -1,5 +1,5 @@
 name: logencode_flutter
-description: A new Flutter project.
+description: 로젠택배 지점코드 조회
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 2.7.2+27
+version: 2.8.0+28
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -31,16 +31,19 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3  
   google_fonts: ^0.3.8
-  flutter_webview_plugin: ^0.3.11
-  admob_flutter: ^1.0.1
+  flutter_webview_plugin: ^0.4.0
+  little_easy_admob:
+    git: 
+      url: https://github.com/smok95/little_easy_admob
+      ref: 99d89f8d88d9dc27f0b6ea5e30a0ddfda5c39f36 #0.0.4
   share: ^0.6.4+3
-  url_launcher: ^5.5.0
+  url_launcher: ^6.0.20
   get: ^3.4.1  
-  settings_ui: ^0.5.0
+  settings_ui: ^2.0.2
   package_info: ^0.4.1
   http: ^0.12.2
   intl: ^0.17.0
-  connectivity: ^0.4.9+3
+  connectivity_plus: ^2.2.1
   draggable_scrollbar: ^0.0.4
   bordered_text: ^1.0.0
 

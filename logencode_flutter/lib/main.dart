@@ -1,7 +1,7 @@
-import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:little_easy_admob/little_easy_admob.dart';
 import 'package:logencode_flutter/logencode_search_page.dart';
 import 'package:logencode_flutter/settings_page.dart';
 import 'package:share/share.dart';
@@ -15,11 +15,8 @@ import 'my_private_data.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  Admob.initialize();
-  // Run this before displaying any ad.
-
-  // for iOS
-  await Admob.requestTrackingAuthorization();
+  // AdMob 초기화
+  LittleEasyAdmob.initialize(requestTrackingAuthorization: true);
 
   runApp(LogenCodeApp());
 }

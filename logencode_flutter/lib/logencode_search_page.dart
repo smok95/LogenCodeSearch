@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:logencode_flutter/controller/search_controller.dart';
 import 'package:logencode_flutter/model/logen_code.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 import 'parcel_tracking_vew.dart';
 import 'code_list_view.dart';
@@ -27,7 +27,7 @@ class _LogencodeSearchPageState extends State<LogencodeSearchPage> {
   var _textEditor = TextEditingController();
   var _showClearBtn = false;
   final _controller = SearchController();
-  var _result = List<LogenCode>();
+  var _result = <LogenCode>[];
 
   @override
   void initState() {

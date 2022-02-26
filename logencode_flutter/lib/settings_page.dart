@@ -34,12 +34,12 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final lo = MyLocal.of(context).text;
 
-    final tiles = List<SettingsTile>();
+    final tiles = <SettingsTile>[];
 
     if (Platform.isAndroid) {
       tiles.add(SettingsTile(
           leading: Icon(Icons.rate_review),
-          title: lo('rate review'),
+          title: Text(lo('rate review')),
           onPressed: (_) {
             _fireChange('rate review', null);
           }));
@@ -47,7 +47,7 @@ class SettingsPage extends StatelessWidget {
       tiles.add(
         SettingsTile(
             leading: Icon(Icons.share),
-            title: lo('share app'),
+            title: Text(lo('share app')),
             onPressed: (_) {
               _fireChange('share app', null);
             }),
@@ -56,7 +56,7 @@ class SettingsPage extends StatelessWidget {
       tiles.add(
         SettingsTile(
             leading: Icon(Icons.apps),
-            title: lo('more apps'),
+            title: Text(lo('more apps')),
             onPressed: (_) {
               _fireChange('more apps', null);
             }),
@@ -66,14 +66,14 @@ class SettingsPage extends StatelessWidget {
     tiles.add(
       SettingsTile(
         leading: Icon(Icons.open_in_browser),
-        title: '로젠택배 홈페이지',
+        title: Text('로젠택배 홈페이지'),
         onPressed: (_) => _fireChange('open logen homepage', null),
       ),
     );
 
     tiles.add(SettingsTile(
       leading: Icon(Icons.info_outline),
-      title: lo('app info'),
+      title: Text(lo('app info')),
       onPressed: (_) async {
         PackageInfo packageInfo = await PackageInfo.fromPlatform();
         showAboutDialog(

@@ -5,6 +5,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## 2.8.0+28 -
+### Changed
+- admob_flutter 에서 little_easy_admob(google_mobile_ads wrapper)로 변경
+- flutter_webview_plugin: ^0.3.11 ==> flutter_webview_plugin: ^0.4.0
+- settings_ui: ^0.5.0 ==> settings_ui: ^2.0.2
+- connectivity: ^0.4.9+3 ==> connectivity_plus: ^2.2.1
+- url_launcher: ^5.5.0 ==> url_launcher: ^6.0.20
+
 ## 2.7.2+27 - 2021-10-19
 ### Changed
 - ios appStore 마케팅URL에 admob admob.txt 인증관련 설정 추가를 위한 버전정보 수정(소스 변경사항은 없음)

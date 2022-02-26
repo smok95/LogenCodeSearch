@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart' as Foundation;
-import 'package:admob_flutter/admob_flutter.dart';
+import 'package:little_easy_admob/little_easy_admob.dart';
 import 'my_private_data.dart';
 
 class MyAdmob {
@@ -37,46 +37,8 @@ class MyAdmob {
     }
   }
 
-  /// Admob 배너 생성
-  static AdmobBanner createAdmobBanner(
-      {AdmobBannerSize adSize = AdmobBannerSize.FULL_BANNER}) {
-    return AdmobBanner(adUnitId: unitId, adSize: adSize);
-  }
-
-  static AdmobBanner createAdmobBanner2(
-      {AdmobBannerSize adSize = AdmobBannerSize.FULL_BANNER}) {
-    return AdmobBanner(adUnitId: unitId2, adSize: adSize);
-  }
-
   /// Admob Adaptive 배너 생성
-  static AdmobBanner createAdmobAdaptiveBanner(
-      String unitId, BuildContext context) {
-    final width = MediaQuery.of(context).size.width.toInt();
-    final adSize = AdmobBannerSize.ADAPTIVE_BANNER(width: width);
-    print("createAdmobAdaptiveBanner, unitId=$unitId");
-    return AdmobBanner(adUnitId: unitId, adSize: adSize);
-  }
-
-  // Adaptive, Smart Banner와 같이 크기가 고정이 아닌 배너의 크기를 구한다.
-  static Future<Size> getBannerSize(AdmobBannerSize admobBannerSize) async {
-    return await Admob.bannerSize(admobBannerSize);
-  }
-
-  /// 화면크기에 맞는 배너 높이값을 구한다.
-  double getSmartBannerHeight(BuildContext context) {
-    // 참고페이지 : https://stackoverflow.com/questions/50935918/how-to-get-banner-size-of-smart-banner
-
-    MediaQueryData mediaScreen = MediaQuery.of(context);
-    double deviceHeight = mediaScreen.orientation == Orientation.portrait
-        ? mediaScreen.size.height
-        : mediaScreen.size.width;
-
-    if (deviceHeight <= 400.0) {
-      return 32.0;
-    } else if (deviceHeight > 720.0) {
-      return 90.0;
-    } else {
-      return 50.0;
-    }
+  static Widget createAdmobAdaptiveBanner(String unitId, BuildContext context) {
+    return AnchoredAdaptiveBannerAdWidget(adUnitId: unitId);
   }
 }
