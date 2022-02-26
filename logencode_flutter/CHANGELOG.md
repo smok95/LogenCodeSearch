@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## 2.7.2+27 - 2021-10-19
+### Changed
+- ios appStore 마케팅URL에 admob admob.txt 인증관련 설정 추가를 위한 버전정보 수정(소스 변경사항은 없음)
+
 ## 2.7.1+25 - 2021-10-05 (Only Android)
 ### Changed
 - AdMob 배너광고 사이즈 규정에 맞게 수정

@@ -53,7 +53,7 @@
 		<key>io.flutter.embedded_views_preview</key>
 		<true/>
 		<key>NSUserTrackingUsageDescription</key>
-		<string>추적 허용을 하시면 맞춤 광고를 받아보실 수 있습니다.</string>
+		<string>고객에게 최적화된 광고를 제공하기 위해 사용자의 광고 활동 정보를 수집합니다.</string>
 
 		<!-- AppStore Connect 수출규정 문서 누락 경고 뜨지 않도록 -->
 		<key>ITSAppUsesNonExemptEncryption</key>
