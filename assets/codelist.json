@@ -1771,7 +1771,7 @@
         {
             "area": "의창구 / 성산구 [대원동,덕정동,두대동,삼동동,신월동,용지동,용호동,창원중앙도서관,퇴촌동]",
             "branch": "창원의창",
-            "category": "R7",
+            "category": "R1",
             "code": 506,
             "color": "49bce2",
             "region1": "경상권",
@@ -2221,7 +2221,7 @@
         {
             "area": "성산구",
             "branch": "창원성산",
-            "category": "R7",
+            "category": "R1",
             "code": 556,
             "color": "49bce2",
             "region1": "경상권",
